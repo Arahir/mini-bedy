@@ -23,6 +23,8 @@ module.exports = function(app, express) {
   var accommodationRouter = express.Router();
 
   accommodationRouter.use(function(req, res, next){
+    console.log(req.body);
+
     // check header or url parameters or post parameters for token
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
@@ -34,6 +36,8 @@ module.exports = function(app, express) {
         if (err) {
           return res.json({ success: false, message: 'Failed to authenticate token.' });
         } else {
+          console.log('token', req.body);
+
           // if everything is good, save to request for use in other routes
           req.decoded = decoded;
           next(); // make sure we go to the next routes and don't stop here
