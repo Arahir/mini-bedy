@@ -6,7 +6,6 @@ module.exports = function (app) {
 
 //  app.post('/signin', userController.signin);
 //  app.post('/signup', userController.signup);
- app.get('/', function(req, res){
-   res.json({ message: 'hooray! welcome to our api!' });
- });
+ app.post('/signup', userController.signup);
+ app.post('/authenticate', userController.authenticate);
 };
